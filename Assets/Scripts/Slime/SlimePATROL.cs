@@ -9,7 +9,7 @@ public class SlimePATROL : SlimeFSMState {
     public override void beginState()
     {                                                                
         base.beginState();                                           
-        manager.anim.CrossFade("SL_Walk");                           
+        //manager.anim.CrossFade("SL_Walk");                           
         Vector3 origin = goal;                                       
         //goal = new Vector3(Random.Range(origin.x - 3.0f, origin.x + 3.0f), 0, Random.Range(origin.z - 3.0f, origin.z + 3.0f));
         goal = new Vector3(Random.Range( - 5.0f,  + 5.0f), 0, Random.Range(- 5.0f,  + 5.0f));

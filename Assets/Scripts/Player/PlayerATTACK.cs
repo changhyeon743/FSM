@@ -6,7 +6,6 @@ public class PlayerATTACK : PlayerFSMState {
     public override void BeginState()
     {
         base.BeginState();
-        manager.anim.CrossFade("KK_Attack");
         manager.marker.gameObject.SetActive(false);
         manager.attackMarker.gameObject.SetActive(true);
     }

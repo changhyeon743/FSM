@@ -31,7 +31,7 @@ public class PlayerFSManager : MonoBehaviour {
     
     Dictionary<PlayerState,PlayerFSMState> states = new Dictionary<PlayerState,PlayerFSMState>();
 
-    public Animation anim;
+    public Animator anim;
 
     private void Awake() {
         Debug.Log("Awake");
@@ -47,7 +47,8 @@ public class PlayerFSManager : MonoBehaviour {
         states.Add(PlayerState.CHASE, GetComponent<PlayerCHASE>());
         states.Add(PlayerState.ATTACK, GetComponent<PlayerATTACK>());
 
-        anim = GetComponentInChildren<Animation>();
+        anim = GetComponentInChildren<Animator>();
+
         Debug.Log("Awake done");
     }
 
@@ -62,9 +63,11 @@ public class PlayerFSManager : MonoBehaviour {
             fsm.enabled = false;
         }
 
+        currentState = newState;
         states[newState].enabled = true;
         states[newState].BeginState();
-        currentState = newState;
+        anim.SetInteger("CurrentState", (int)currentState);
+        
     }
 	void Update () {
         if (Input.GetMouseButtonDown(0)) {
@@ -77,7 +80,6 @@ public class PlayerFSManager : MonoBehaviour {
                 if (hit.transform.gameObject.layer == 10) {
                     marker.position = hit.point;
                     SetState(PlayerState.RUN);
-                    Debug.Log("hit!" + hit.point);
                 }
                 else if (hit.transform.gameObject.layer == 11) {
                     //CHASE

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerIDLE : PlayerFSMState {
     public override void BeginState() {
         base.BeginState();
-        manager.anim.CrossFade("KK_Idle");
         manager.marker.gameObject.SetActive(false);
         manager.attackMarker.gameObject.SetActive(false);
     }

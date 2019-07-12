@@ -18,17 +18,21 @@ public class SlimeFSManager : MonoBehaviour {
 
     Dictionary<SlimeState, SlimeFSMState> states = new Dictionary<SlimeState, SlimeFSMState>();
 
-    public Animation anim;
+    public Animator anim;
 
 	// Use this for initialization
-	void Start () {
-        states.Add(SlimeState.IDLE, GetComponent<SlimeFSMState>());
+	void Awake () {
+        states.Add(SlimeState.IDLE, GetComponent<SlimeIDLE>());
         states.Add(SlimeState.PATROL, GetComponent<SlimePATROL>());
         
-        anim = GetComponentInChildren<Animation>();
+        anim = GetComponentInChildren<Animator>();
         cc = GetComponent<CharacterController>();
-        SetState(startState);
+        
 	}
+
+    void Start() {
+        SetState(startState);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,10 +44,12 @@ public class SlimeFSManager : MonoBehaviour {
         foreach (SlimeFSMState fsm in states.Values)
         {
             fsm.enabled = false;
+            Debug.Log(fsm);
         }
 
         states[newState].enabled = true;
         states[newState].beginState();
         currentState = newState;
+        anim.SetInteger("CurrentState", (int)currentState);
     }
 }

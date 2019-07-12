@@ -152,6 +152,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: e7e395e8dc958fc40bbc6b3a476e6f4b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7797c68edc10da8409ca87c449ff289f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7e395e8dc958fc40bbc6b3a476e6f4b, type: 3}
   m_IsPrefabAsset: 0
@@ -328,7 +332,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -351,8 +355,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0.0062099053, y: 0.70132744, z: -0.712786, w: 0.006112996}
-  m_LocalPosition: {x: -0.19733968, y: 10.902771, z: -0.37863496}
+  m_LocalRotation: {x: -0.048756234, y: 0.94512314, z: -0.27689883, w: -0.16640949}
+  m_LocalPosition: {x: 4.1375356, y: 4.993456, z: 8.27518}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -401,6 +405,10 @@ Prefab:
       propertyPath: m_Animation
       value: 
       objectReference: {fileID: 7400000, guid: f1e794e014bb17f4fad25a5af4093ed9, type: 3}
+    - target: {fileID: 11100000, guid: 13719d1102a1cb2488126d520b60795f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13719d1102a1cb2488126d520b60795f, type: 3}
   m_IsPrefabAsset: 0
@@ -435,7 +443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  startState: 0
+  startState: 1
   cc: {fileID: 0}
   moveSpeed: 1
   rotateSpeed: 275
@@ -643,6 +651,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1736228925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 13719d1102a1cb2488126d520b60795f,
+    type: 3}
+  m_PrefabInternal: {fileID: 612534871}
+--- !u!95 &1736228926
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1736228925}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 13719d1102a1cb2488126d520b60795f, type: 3}
+  m_Controller: {fileID: 9100000, guid: bea9530967c63e044a1a6a7d97dddd84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2076642085
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +750,7 @@ MonoBehaviour:
   moveSpeed: 5
   fallSpeed: 10
   rotateSpeed: 300
-  attackRange: 0.5
+  attackRange: 1
   target: {fileID: 0}
   layerMask:
     serializedVersion: 2

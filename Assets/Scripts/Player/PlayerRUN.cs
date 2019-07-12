@@ -6,7 +6,6 @@ public class PlayerRUN : PlayerFSMState {
 
     public override void BeginState() {
         base.BeginState();
-        manager.anim.CrossFade("KK_Run_No");
         manager.marker.gameObject.SetActive(true);
         manager.attackMarker.gameObject.SetActive(false);
     }

@@ -7,7 +7,7 @@ public class SlimeIDLE : SlimeFSMState {
     public override void beginState()
     {
         base.beginState();
-        manager.anim.CrossFade("SL_Idle");
+        //manager.anim.CrossFade("SL_Idle");
         Invoke("Move",3.0f);
     }
 
