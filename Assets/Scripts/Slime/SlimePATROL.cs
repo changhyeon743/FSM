@@ -27,7 +27,13 @@ public class SlimePATROL : SlimeFSMState {
 	
 	// Update is called once per frame
 	void Update () {
-        SRUtil.SRMove(manager.cc, manager.transform, goal, manager.moveSpeed, manager.rotateSpeed, manager.fallSpeed);
+        if (SRUtil.Detect(manager.sight, 1, manager.playerCC))
+        {
+            manager.SetState(SlimeState.CHASE);
+
+        }
+
+        SRUtil.SRMove(manager.cc, manager.transform, goal, manager.stat.moveSpeed, manager.stat.rotateSpeed, manager.stat.fallSpeed);
 
         Vector3 diff = goal - transform.position;
         diff.y = 0;

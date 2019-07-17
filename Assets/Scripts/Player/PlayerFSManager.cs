@@ -7,7 +7,8 @@ public enum PlayerState
     IDLE = 0,
     RUN,
     CHASE,
-    ATTACK
+    ATTACK,
+    DEAD
 }
 
 public class PlayerFSManager : MonoBehaviour {
@@ -20,10 +21,8 @@ public class PlayerFSManager : MonoBehaviour {
     public Transform attackMarker;
 
     public CharacterController cc;
-    public float moveSpeed;
-    public float fallSpeed;
-    public float rotateSpeed;
-    public float attackRange;
+
+    public PlayerStat stat;
 
     public Transform target;
 
@@ -42,10 +41,13 @@ public class PlayerFSManager : MonoBehaviour {
 
         cc = GetComponent<CharacterController>();
 
+        stat = GetComponent<PlayerStat>();
+
         states.Add(PlayerState.IDLE, GetComponent<PlayerIDLE>());
         states.Add(PlayerState.RUN, GetComponent<PlayerRUN>());
         states.Add(PlayerState.CHASE, GetComponent<PlayerCHASE>());
         states.Add(PlayerState.ATTACK, GetComponent<PlayerATTACK>());
+        states.Add(PlayerState.DEAD, GetComponent<PlayerDEAD>());
 
         anim = GetComponentInChildren<Animator>();
 
@@ -70,7 +72,7 @@ public class PlayerFSManager : MonoBehaviour {
         
     }
 	void Update () {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(1) && currentState != PlayerState.DEAD) {
             //비트연산 : 1000000000
             //int layer = 1 << 10;
 
@@ -93,4 +95,18 @@ public class PlayerFSManager : MonoBehaviour {
             }
         }
 	}
+
+    public void AttackCheck()
+    {
+        Debug.Log("Attack!");
+        target.SendMessage("ApplyDamage", stat.attackRate);
+        //Dead();
+    }
+
+    public void Dead()
+    {
+        cc.enabled = false;
+        SetState(PlayerState.DEAD);
+    }
+
 }

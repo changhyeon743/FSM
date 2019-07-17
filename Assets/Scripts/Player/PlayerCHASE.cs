@@ -13,11 +13,13 @@ public class PlayerCHASE : PlayerFSMState {
 	
 	// Update is called once per frame
 	void Update () {
-        SRUtil.SRMove(manager.cc, manager.transform, manager.target.position, manager.moveSpeed, manager.rotateSpeed, manager.fallSpeed);
+        SRUtil.SRMove(manager.cc, manager.transform, manager.target.position, manager.stat.moveSpeed, manager.stat.rotateSpeed, manager.stat.fallSpeed);
+
+
 
         Vector3 diff = manager.target.position - transform.position;
         diff.y = 0;
-        if (diff.sqrMagnitude < manager.attackRange * manager.attackRange )
+        if (diff.sqrMagnitude < manager.stat.attackRange * manager.stat.attackRange)
         {
             manager.SetState(PlayerState.ATTACK);
             return;

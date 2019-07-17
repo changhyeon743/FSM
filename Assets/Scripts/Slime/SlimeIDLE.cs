@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SlimeIDLE : SlimeFSMState {
 
-    public override void beginState()
-    {
+    public override void beginState(){
         base.beginState();
         //manager.anim.CrossFade("SL_Idle");
-        Invoke("Move",3.0f);
+        Invoke("Move",2.0f);
     }
 
 	// Use this for initialization
@@ -18,7 +17,9 @@ public class SlimeIDLE : SlimeFSMState {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (SRUtil.Detect(manager.sight,1,manager.playerCC)) {
+            manager.SetState(SlimeState.CHASE);
+        }
 	}
 
     void Move() {

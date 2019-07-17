@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class SRUtil{
+    public static bool Detect(Camera sight, float aspect, CharacterController cc)
+    {
+        sight.aspect = aspect;
+        Plane[] ps = GeometryUtility.CalculateFrustumPlanes(sight);
+        return GeometryUtility.TestPlanesAABB(ps, cc.bounds);
+    }
+
     public static void SRMove(
         CharacterController cc,
         Transform self,

@@ -18,7 +18,7 @@ public class PlayerATTACK : PlayerFSMState {
 	void Update () {
         Vector3 diff = manager.target.position - transform.position;
         diff.y = 0;
-        if (diff.sqrMagnitude > manager.attackRange * manager.attackRange)
+        if (diff.sqrMagnitude > manager.stat.attackRange * manager.stat.attackRange)
         {
             manager.SetState(PlayerState.CHASE);
             return;

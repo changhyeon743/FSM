@@ -17,7 +17,7 @@ public class PlayerRUN : PlayerFSMState {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        SRUtil.SRMove(manager.cc, manager.transform, manager.marker.position, manager.moveSpeed, manager.rotateSpeed, manager.fallSpeed);
+        SRUtil.SRMove(manager.cc, manager.transform, manager.marker.position, manager.stat.moveSpeed, manager.stat.rotateSpeed, manager.stat.fallSpeed);
 
         Vector3 diff = manager.marker.position - transform.position;
         diff.y = 0;
